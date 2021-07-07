@@ -50,8 +50,18 @@ if [ "$1" = "new" ]; then
 	$refresh
 fi
 
-echo "Notes"
+lineNum=0;
+while read -r line; do
+    lineNum=$((lineNum+1))
+done < $notefile
+
+if [ "$lineNum" = "1" ]; then
+echo "To Do - 1 Task"
 echo "---"
+else
+echo "To Do - $lineNum Tasks"
+echo "---"
+fi
 
 # variable to track which line is being read
 lineNum=1;
